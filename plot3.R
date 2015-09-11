@@ -53,12 +53,7 @@ png(filename = "plot3.png")
 
 # Create the desired plot, suppressing the default x-axis formatting
 with(power, plot(datetime, Sub_metering_1, type = "n", 
-                 xlab = "", xaxt = "n",
-                 ylab = "Energy sub metering"))
-
-# Format the x-axis labels
-daterange <- c(min(power$datetime), (max(power$datetime) + 60))
-axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
+                 xlab = "", ylab = "Energy sub metering"))
 
 # Add points for each sub-metering stations
 with(power, points(datetime, Sub_metering_1, type = "l"))

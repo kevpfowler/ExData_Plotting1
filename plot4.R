@@ -64,10 +64,7 @@ par(mfcol = c(2, 2), mar = c(4, 4, 4, 2), oma = c(1, 0, 0, 0))
 # the "(kilowatts)" in the y-axis label). 
 # Redoing that code here (see plot2.R for code comments):
 with(power, plot(datetime, Global_active_power, type = "l", 
-                 xlab = "", xaxt = "n",
-                 ylab = "Global Active Power"))
-daterange <- c(min(power$datetime), (max(power$datetime) + 60))
-axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
+                 xlab = "", ylab = "Global Active Power"))
 
 # Second Plot:
 #
@@ -75,10 +72,7 @@ axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
 # except there is no box around the legend.
 # Redoing that code here (see plot3.R for code comments):
 with(power, plot(datetime, Sub_metering_1, type = "n", 
-                 xlab = "", xaxt = "n",
-                 ylab = "Energy sub metering"))
-daterange <- c(min(power$datetime), (max(power$datetime) + 60))
-axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
+                 xlab = "", ylab = "Energy sub metering"))
 with(power, points(datetime, Sub_metering_1, type = "l"))
 with(power, points(datetime, Sub_metering_2, type = "l", col = "red"))
 with(power, points(datetime, Sub_metering_3, type = "l", col = "blue"))
@@ -92,18 +86,12 @@ legend("topright",                                     # location
 #
 # The third plot is similar to the first but for Voltage vs datetime. 
 #  - The default x-axis label is used for this plot.
-with(power, plot(datetime, Voltage, 
-                 type = "l", xaxt = "n"))
-daterange <- c(min(power$datetime), (max(power$datetime) + 60))
-axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
+with(power, plot(datetime, Voltage, type = "l"))
 
 # Fourth Plot:
 #
 # The fourth plot is similar to the third but for Global_reactive_power
-with(power, plot(datetime, Global_reactive_power, 
-                 type = "l",xaxt = "n"))
-daterange <- c(min(power$datetime), (max(power$datetime) + 60))
-axis.POSIXct(1, at=seq(daterange[1], daterange[2], by="day"), format = "%a")
+with(power, plot(datetime, Global_reactive_power, type = "l"))
 
 # Close the PNG device
 dev.off()
